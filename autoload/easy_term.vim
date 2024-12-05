@@ -5,12 +5,16 @@ function! s:ET._new_terminal() abort
     call feedkeys("\<ESC>", 'i')
   endif
 
-  let bash = '/bin/bash'
+  let l:bash = '/bin/bash'
   if g:is_windows
-    let bash = 'cmd'
+    let l:bash = 'cmd'
   endif
 
-  let self['term_obj'] = term_start(bash)
+  if g:is_macvim
+    let l:bash = '/bin/zsh'
+  endif
+
+  let self['term_obj'] = term_start(l:bash)
   let self['job_id'] = term_getjob(self['term_obj'])
   let self['is_open'] = 1
 endfunction
