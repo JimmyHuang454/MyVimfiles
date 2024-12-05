@@ -6,7 +6,6 @@ endfor
 "                            rely on git and vimL                            "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if g:has_git
-  " call g:LoadPlugin('mhinz/vim-signify')
   call g:LoadPlugin('airblade/vim-gitgutter')
   call g:LoadPlugin('tpope/vim-fugitive')
   call g:LoadPlugin('Xuyuanp/nerdtree-git-plugin')

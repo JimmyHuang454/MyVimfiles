@@ -34,3 +34,8 @@ call g:LoadPlugin('mbbill/undotree')
 call g:LoadPlugin('hotoo/pangu.vim')
 call g:LoadPlugin('tpope/vim-abolish')
 " call g:LoadPlugin('airblade/vim-rooter')
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                                color plugi                                 "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+call g:LoadPlugin('lifepillar/vim-solarized8')
