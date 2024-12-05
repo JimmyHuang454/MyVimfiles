@@ -53,7 +53,7 @@ let g:loaded_completion = v:false"{{{
 if g:has_job
   " call g:LoadPlugin('Chiel92/vim-autoformat')
   call g:LoadPlugin('sbdchd/neoformat')
-  call g:LoadPlugin('https://gitee.com/Jimmy_Huang/ecy-terminal')
+  call g:LoadPlugin('JimmyHuang454/easy-term')
   if get(g:, 'use_vim_lsp', v:false)
     call g:LoadPlugin('mattn/vim-lsp-settings')
     call g:LoadPlugin('prabirshrestha/vim-lsp')
