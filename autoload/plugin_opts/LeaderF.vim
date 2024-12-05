@@ -35,8 +35,10 @@ let g:Lf_ShowDevIcons = 0
 let g:always_leaderf = 1
 
 nmap gm :LeaderfMru<cr>
-nmap gb :LeaderfBuffer<cr>
+nmap gb :LeaderfBufferAll<cr>
+nmap gw :LeaderfWindow<cr>
 nmap g; :LeaderfHistoryCmd<cr>
+nmap gf :LeaderfSelf<cr>
 nmap <Leader>d :LeaderfLine <cr>
 nmap <Leader>a :call MySelectSymbols()<cr>
 nmap <Leader>m :LeaderfMarks<cr>
