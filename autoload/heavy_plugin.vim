@@ -87,5 +87,5 @@ call g:LoadPlugin('lervag/vimtex')
 " Plug 'junegunn/fzf.vim'
 
 if g:is_macvim
-  call g:LoadPlugin('ybian/smartim')
+  call g:LoadPlugin('JimmyHuang454/smartim')
 endif
