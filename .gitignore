@@ -20,3 +20,4 @@ ECY_server.log
 tags
 # Persistent undo
 [._]*.un~
+.DS_Store
