@@ -79,13 +79,17 @@ if !g:loaded_completion && !get(g:, 'do_not_use_completion', v:false)
   call g:LoadFile('completion.vim', 0)
 endif"}}}
 
+if g:is_macvim
+  if get(g:, 'use_smartim', v:false)
+    call g:LoadPlugin('JimmyHuang454/smartim')
+  else
+    call g:LoadFile('macos_forcus.vim', 0)
+  endif
+endif
+
 call g:LoadPlugin('MarcWeber/vim-addon-mw-utils')
 call g:LoadPlugin('tomtom/tlib_vim')
 call g:LoadPlugin('thinca/vim-themis')
 call g:LoadPlugin('lervag/vimtex')
 " Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 " Plug 'junegunn/fzf.vim'
-
-if g:is_macvim
-  call g:LoadPlugin('JimmyHuang454/smartim')
-endif
