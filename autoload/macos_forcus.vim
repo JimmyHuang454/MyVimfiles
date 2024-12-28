@@ -16,7 +16,6 @@ function! s:SetImType(imType) abort
   if a:imType == ''
     return
   endif
-
   silent call system(s:im_cmd . ' ' . a:imType)
 endfunction
 

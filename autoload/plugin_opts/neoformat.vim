@@ -14,7 +14,7 @@ fun! MyFormat() abort
             exe "Pangu"
       endif
 
-      if exists('g:did_coc_loaded') && CocAction('hasProvider', 'format') && get(g:, 'use_coc_format', 0)
+      if exists('g:did_coc_loaded') && CocAction('hasProvider', 'format') && get(g:, 'use_coc_format', 1)
             call CocActionAsync('format')
       else
             exe "Neoformat"
