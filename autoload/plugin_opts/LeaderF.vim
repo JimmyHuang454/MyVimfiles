@@ -35,7 +35,7 @@ let g:Lf_ShowDevIcons = 0
 let g:always_leaderf = 1
 
 nmap gm :LeaderfMru<cr>
-nmap gb :LeaderfBufferAll<cr>
+nmap gb :LeaderfBuffer<cr>
 nmap gw :LeaderfWindow<cr>
 nmap g; :LeaderfHistoryCmd<cr>
 nmap gf :LeaderfSelf<cr>
