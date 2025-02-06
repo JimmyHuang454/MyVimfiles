@@ -55,6 +55,6 @@ augroup macos_forcus
   autocmd VimEnter    * call s:VimFocusGain()
   autocmd VimLeavePre * call s:VimFocusLost()
 
-  autocmd FocusLost   * call s:VimFocusLost()
-  autocmd FocusGained * call s:VimFocusGain()
+  " autocmd FocusLost   * call s:VimFocusLost()
+  " autocmd FocusGained * call s:VimFocusGain()
 augroup end
