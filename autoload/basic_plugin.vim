@@ -3,6 +3,7 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call g:LoadPlugin('tpope/vim-surround')
 call g:LoadPlugin('tpope/vim-commentary')
+call g:LoadPlugin('posva/vim-vue')
 call g:LoadPlugin('tpope/vim-repeat')
 call g:LoadPlugin('haya14busa/vim-edgemotion')
 call g:LoadPlugin('haya14busa/is.vim')
