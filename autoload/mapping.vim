@@ -7,8 +7,8 @@ let maplocalleader = "\<Space>"
 
 call MapAlt('map <A-c> :q<cr>', 'c')
 call MapAlt('imap <A-c> <ESC>q<cr>', 'c')
-call MapAlt('map <A-w> :w<cr>', 'w')
-call MapAlt('imap <A-w> <ESC>:w<cr>', 'w')
+call MapAlt('map <A-w> :w<cr>', 'wa')
+call MapAlt('imap <A-w> <ESC>:w<cr>', 'wa')
 
 call MapAlt('map <A-x> :q!<cr>', 'x')
 call MapAlt('imap <A-x> <ESC>:q!<cr>', 'x')
