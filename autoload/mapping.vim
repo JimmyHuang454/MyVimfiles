@@ -30,6 +30,9 @@ vmap 9 $
 
 map fd <C-d>zz
 map fe <C-u>zz
+nmap <PageDown> <PageDown>zz
+nmap <PageUp> <PageUp>zz
+
 nmap <leader>q :%s/\r//g<CR>
 
 map <leader>y :let @+ = GetCurrentBufferPath()<CR>
