@@ -91,5 +91,6 @@ call g:LoadPlugin('MarcWeber/vim-addon-mw-utils')
 call g:LoadPlugin('tomtom/tlib_vim')
 call g:LoadPlugin('thinca/vim-themis')
 call g:LoadPlugin('lervag/vimtex')
+call g:LoadPlugin('dart-lang/dart-vim-plugin')
 " Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 " Plug 'junegunn/fzf.vim'
