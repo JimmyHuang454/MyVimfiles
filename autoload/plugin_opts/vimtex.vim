@@ -1,6 +1,6 @@
 if g:is_windows && executable('texworks')
   let g:vimtex_view_general_viewer = 'texworks'
-else g:is_macvim
+elseif g:is_macvim
   let g:vimtex_view_method = 'skim'
 endif
 " let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
