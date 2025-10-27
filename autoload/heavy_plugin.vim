@@ -82,7 +82,7 @@ endif"}}}
 if g:is_macvim
   if get(g:, 'use_smartim', v:false)
     call g:LoadPlugin('JimmyHuang454/smartim')
-  else
+  elseif get(g:, 'use_auto_select', v:true)
     call g:LoadFile('macos_forcus.vim', 0)
   endif
 endif
