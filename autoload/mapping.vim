@@ -1,5 +1,5 @@
-let mapleader = "\<Space>"
-let maplocalleader = "\<Space>"
+" let mapleader = "\<Space>"
+" let maplocalleader = "\<Space>"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                               vim's mapping                                "
@@ -22,7 +22,7 @@ else
   tmap <A-x> <C-w>:quit!<CR>
 endif
 
-map <leader><leader> :q<cr>
+map <Space><Space> :q<cr>
 
 map gj <C-w>j
 map gk <C-w>k

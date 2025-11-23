@@ -1,5 +1,5 @@
-nmap <Leader>g :Git<cr>
-nmap <Leader>p :Git push<cr>
+nmap <Space>g :Git<cr>
+nmap <Space>p :Git push<cr>
 
 " must put these outside a function
 let s:base_dir = expand( '<sfile>:p:h' )

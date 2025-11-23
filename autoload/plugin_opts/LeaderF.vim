@@ -39,16 +39,16 @@ nmap gb :LeaderfBuffer<cr>
 nmap gw :LeaderfWindow<cr>
 nmap g; :LeaderfHistoryCmd<cr>
 nmap gf :LeaderfSelf<cr>
-nmap <Leader>d :LeaderfLine <cr>
-nmap <Leader>a :call MySelectSymbols()<cr>
-nmap <Leader>m :LeaderfMarks<cr>
+nmap <Space>d :LeaderfLine <cr>
+nmap <Space>a :call MySelectSymbols()<cr>
+nmap <Space>m :LeaderfMarks<cr>
 
 let g:leaderf_rg_CMD = get(g:, 'leaderf_rg_CMD', 'rg')
 if executable(g:leaderf_rg_CMD)
   " seach current project file wiht its name.
-  nmap <Leader>f :execute('Leaderf file ' . FindRootDirectory())<cr>
+  nmap <Space>f :execute('Leaderf file ' . FindRootDirectory())<cr>
   " seach current project file's text.
-  nmap <Leader>s :execute(LeaderfRgSearch(0, ''))<cr>
+  nmap <Space>s :execute(LeaderfRgSearch(0, ''))<cr>
   " seach current word under cursor in normal mode in that project.
   nmap gs :execute(LeaderfRgSearch(1, expand("<cword>")))<cr>
   " seach seleted word in selete mode in that project.
