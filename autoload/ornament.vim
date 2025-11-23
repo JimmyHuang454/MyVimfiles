@@ -18,7 +18,7 @@ endif
 set background=dark
 
 " 设置map识别失效时间
-set ttimeoutlen=50
+" set ttimeoutlen=50
 
 " 内部工作编码
 set encoding=utf-8
