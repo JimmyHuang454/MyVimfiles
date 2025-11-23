@@ -6,7 +6,7 @@ nmap ff <Plug>(easymotion-s)
 vmap ff <Plug>(easymotion-s)
 nmap fl <Plug>(easymotion-overwin-w)
 vmap fl <Plug>(easymotion-overwin-w)
-map <leader><leader> <Plug>(easymotion-repeat)
+" map <leader><leader> <Plug>(easymotion-repeat)
 nmap ; <Plug>(easymotion-next)
 vmap ; <Plug>(easymotion-next)
 let g:EasyMotion_move_highlight = 1
