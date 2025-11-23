@@ -5,15 +5,22 @@ let maplocalleader = "\<Space>"
 "                               vim's mapping                                "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-call MapAlt('map <A-c> :q<cr>', 'c')
-call MapAlt('imap <A-c> <ESC>q<cr>', 'c')
-call MapAlt('map <A-w> :wa<cr>', 'w')
-call MapAlt('imap <A-w> <ESC>:wa<cr>', 'w')
-
-call MapAlt('map <A-x> :q!<cr>', 'x')
-call MapAlt('imap <A-x> <ESC>:q!<cr>', 'x')
-
-call MapAlt('imap <A-f> <C-w>', 'f')
+if g:is_macvim
+  let did_install_default_menus = 1
+  map <D-x> :q<cr>
+  imap <D-x> <esc>:q<cr>
+  map <D-s> :wa<cr>
+  imap <D-s> <esc>:wa<cr>
+  imap <D-f> <C-w>
+  tmap <D-x> <C-w>:quit!<CR>
+else
+  map <A-x> :q<cr>
+  imap <A-x> <esc>:q<cr>
+  map <A-s> :wa<cr>
+  imap <A-s> <esc>:wa<cr>
+  imap <A-f> <C-w>
+  tmap <A-x> <C-w>:quit!<CR>
+endif
 
 map gj <C-w>j
 map gk <C-w>k
@@ -55,11 +62,10 @@ map gn :exec("NERDTree ".expand('%:p'))<CR>
 vmap <Enter> <Plug>(EasyAlign)
 
 if g:has_terminal
-  call MapAlt('tmap <A-c> <C-w>:hide<CR>', 'c')
   if g:is_windows
-    call MapAlt('tmap <A-x> <C-w><C-c>:quit!<CR>', 'x')
+    tmap <A-x> <C-w><C-c>:quit!<CR>
   else
-    call MapAlt('tmap <A-x> <C-w>:quit!<CR>', 'x')
+    tmap <A-x> <C-w>:quit!<CR>
   endif
   tmap gj <C-w><C-j>
   tmap gk <C-w><C-k>
