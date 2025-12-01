@@ -8,14 +8,14 @@ let maplocalleader = "\<Space>"
 if g:is_macvim
   let did_install_default_menus = 1
   map <D-x> :q<cr>
-  imap <D-x> <esc>:q<cr>
+  imap <D-x> <esc>:q!<cr>
   map <D-s> :wa<cr>
   imap <D-s> <esc>:wa<cr>
   imap <D-f> <C-w>
   tmap <D-x> <C-w>:quit!<CR>
 else
   map <A-x> :q<cr>
-  imap <A-x> <esc>:q<cr>
+  imap <A-x> <esc>:q!<cr>
   map <A-s> :wa<cr>
   imap <A-s> <esc>:wa<cr>
   imap <A-f> <C-w>
