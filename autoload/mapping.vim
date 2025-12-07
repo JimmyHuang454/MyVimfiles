@@ -23,6 +23,7 @@ else
 endif
 
 nmap ff :q<cr>
+nmap fw :wa<cr>
 
 map gj <C-w>j
 map gk <C-w>k

@@ -69,7 +69,8 @@ if g:has_job
   else
     call g:LoadPlugin('airblade/vim-rooter')
     if get(g:, 'use_coc', v:true)
-      call g:LoadPlugin('neoclide/coc.nvim', {'branch': 'master'})
+      " call g:LoadPlugin('neoclide/coc.nvim', {'branch': 'release'})
+      call g:LoadPlugin('neoclide/coc.nvim', {'branch': 'master', 'do': 'npm ci'})
     endif
   endif
   let g:loaded_completion = v:true
