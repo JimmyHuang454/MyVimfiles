@@ -35,13 +35,8 @@ if !get(g:, 'use_coc_list', v:false)
     endif
     call g:LoadPlugin('tamago324/LeaderF-filer')
     call g:LoadPlugin('Yggdroot/LeaderF-marks')
-
-  elseif get(g:, 'use_vim_clap', v:false) && has('patch-8.1.2114')
-    if !exists('g:clap_tag')
-      call g:LoadPlugin('liuchengxu/vim-clap')
-    else
-      call g:LoadPlugin('liuchengxu/vim-clap', {'tag': g:clap_tag})
-    endif
+  elseif get(g:, 'use_vim_clap', v:false)
+    call g:LoadPlugin('liuchengxu/vim-clap', { 'do': ':Clap install-binary' })
   else 
     call g:LoadPlugin('ctrlpvim/ctrlp.vim')
   endif
