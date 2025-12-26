@@ -2,6 +2,7 @@ let s:insert_using_im = ''
 let s:im_before_focus_gain = ''
 let s:normal_using_im = get(g:, 'im_normal_mode', 'com.apple.keylayout.ABC')
 let s:im_cmd = get(g:, 'im_cmd', 'macism')
+let s:change_cmd = get(g:, 'im_change_cmd', 'macism')
 
 function! s:GetImType() abort
   try
@@ -16,7 +17,7 @@ function! s:SetImType(imType) abort
   if a:imType == ''
     return
   endif
-  let l:temp = s:im_cmd . ' ' . a:imType
+  let l:temp = s:change_cmd . ' ' . a:imType
   if s:im_cmd == 'macism'
     let  l:temp = l:temp . ' 0'
   endif
@@ -53,7 +54,9 @@ endfunction
 
 augroup macos_forcus
   autocmd!
-  " autocmd InsertEnter    * call s:InsertEnter()
+  if get(g:, 'forcus_insert_enter', v:true)
+    autocmd InsertEnter    * call s:InsertEnter()
+  endif
   autocmd InsertLeavePre * call s:InsertLeave()
 
   autocmd VimEnter    * call s:VimFocusGain()
