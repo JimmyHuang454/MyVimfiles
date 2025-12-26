@@ -10,7 +10,7 @@ function! s:GetImType() abort
   catch 
     let l:saved_im = ''
   endtry
-  return substitute(l:saved_im, '\s\+', '', 'g')
+  return trim(l:saved_im)
 endfunction
 
 function! s:SetImType(imType) abort
