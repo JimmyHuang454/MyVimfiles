@@ -16,7 +16,11 @@ function! s:SetImType(imType) abort
   if a:imType == ''
     return
   endif
-  silent call system(s:im_cmd . ' ' . a:imType)
+  let l:temp = s:im_cmd . ' ' . a:imType
+  if s:im_cmd == 'macism'
+    let  l:temp = l:temp . ' 0'
+  endif
+  silent call system(l:temp)
 endfunction
 
 function! s:InsertEnter() abort
@@ -49,7 +53,7 @@ endfunction
 
 augroup macos_forcus
   autocmd!
-  autocmd InsertEnter    * call s:InsertEnter()
+  " autocmd InsertEnter    * call s:InsertEnter()
   autocmd InsertLeavePre * call s:InsertLeave()
 
   autocmd VimEnter    * call s:VimFocusGain()
