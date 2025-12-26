@@ -1,5 +1,5 @@
-let s:insert_using_im = ''
-let s:im_before_focus_gain = ''
+let g:insert_using_im = ''
+let g:im_before_focus_gain = ''
 let s:normal_using_im = get(g:, 'im_normal_mode', 'com.apple.keylayout.ABC')
 let s:im_cmd = get(g:, 'im_cmd', 'macism')
 let s:change_cmd = get(g:, 'im_change_cmd', 'macism')
@@ -25,15 +25,15 @@ function! s:SetImType(imType) abort
 endfunction
 
 function! s:InsertEnter() abort
-  if s:insert_using_im == '' || s:insert_using_im == s:normal_using_im
+  if g:insert_using_im == '' || g:insert_using_im == s:normal_using_im
     return
   endif
-  call s:SetImType(s:insert_using_im)
+  call s:SetImType(g:insert_using_im)
 endfunction
 
 function! s:InsertLeave() abort
-  let s:insert_using_im = s:GetImType()
-  if s:insert_using_im == s:normal_using_im
+  let g:insert_using_im = s:GetImType()
+  if g:insert_using_im == s:normal_using_im
     return
   endif
   call s:SetImType(s:normal_using_im)
@@ -41,22 +41,22 @@ endfunction
 
 function! s:VimFocusLost() abort
   let l:current_im = s:GetImType()
-  if l:current_im == s:im_before_focus_gain
+  if l:current_im == g:im_before_focus_gain
     return
   endif
 
-  call s:SetImType(s:im_before_focus_gain)
+  call s:SetImType(g:im_before_focus_gain)
 endfunction
 
 function! s:VimFocusGain() abort
-  let s:im_before_focus_gain = s:GetImType()
+  let g:im_before_focus_gain = s:GetImType()
   let l:is_insert = mode() == 'i'
   let l:im_should_be_used = s:normal_using_im
   if l:is_insert
-    let l:im_should_be_used = s:insert_using_im
+    let l:im_should_be_used = g:insert_using_im
   endif
 
-  if l:im_should_be_used == s:im_before_focus_gain
+  if l:im_should_be_used == g:im_before_focus_gain
     return
   endif
 
