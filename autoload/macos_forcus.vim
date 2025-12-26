@@ -40,16 +40,27 @@ function! s:InsertLeave() abort
 endfunction
 
 function! s:VimFocusLost() abort
+  let l:current_im = s:GetImType()
+  if l:current_im == s:im_before_focus_gain
+    return
+  endif
+
   call s:SetImType(s:im_before_focus_gain)
 endfunction
 
 function! s:VimFocusGain() abort
   let s:im_before_focus_gain = s:GetImType()
-  let l:temp = s:normal_using_im
-  if mode() == 'i'
-    let l:temp = s:insert_using_im
+  let l:is_insert = mode() == 'i'
+  let l:im_should_be_used = s:normal_using_im
+  if l:is_insert
+    let l:im_should_be_used = s:insert_using_im
   endif
-  call s:SetImType(l:temp)
+
+  if l:im_should_be_used == s:im_before_focus_gain
+    return
+  endif
+
+  call s:SetImType(l:im_should_be_used)
 endfunction
 
 augroup macos_forcus
