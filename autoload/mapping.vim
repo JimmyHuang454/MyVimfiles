@@ -22,8 +22,8 @@ else
   tmap <A-x> <C-w>:quit!<CR>
 endif
 
-nmap ff :q<cr>
-nmap fw :wa<cr>
+nmap x :q<cr>
+nmap s :wa<cr>
 
 map gj <C-w>j
 map gk <C-w>k
