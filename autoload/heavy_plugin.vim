@@ -41,6 +41,10 @@ if !get(g:, 'use_coc_list', v:false)
     call g:LoadPlugin('ctrlpvim/ctrlp.vim')
   endif
 endif
+
+if get(g:, 'use_my_finder', v:false)
+  call g:LoadPlugin('JimmyHuang454/MyFinder')
+endif
 "}}}
 
 let g:loaded_completion = v:false"{{{
