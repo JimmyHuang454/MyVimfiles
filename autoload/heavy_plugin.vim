@@ -45,6 +45,10 @@ endif
 if get(g:, 'use_my_finder', v:false)
   call g:LoadPlugin('JimmyHuang454/MyFinder')
 endif
+
+if get(g:, 'use_fzf', v:false)
+  call g:LoadPlugin('junegunn/fzf.vim',{'do': { -> fzf#install() } })
+endif
 "}}}
 
 let g:loaded_completion = v:false"{{{
