@@ -47,7 +47,8 @@ if get(g:, 'use_my_finder', v:false)
 endif
 
 if get(g:, 'use_fzf', v:false)
-  call g:LoadPlugin('junegunn/fzf.vim',{'do': { -> fzf#install() } })
+  call g:LoadPlugin('junegunn/fzf',{'do': { -> fzf#install() } })
+  call g:LoadPlugin('junegunn/fzf.vim')
 endif
 "}}}
 
