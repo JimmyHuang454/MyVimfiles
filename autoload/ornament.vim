@@ -5,8 +5,6 @@
 "  设置字体 
 if has('gui')
   set guifont=JetBrains\ Mono\:h14
-else
-  set guifont=JetBrains\ Mono\ 12
 endif
 
 if g:is_windows && g:is_gui

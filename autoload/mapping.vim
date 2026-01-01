@@ -49,12 +49,7 @@ nmap <leader>n :noh<CR>
 
 map <leader>y :let @+ = GetCurrentBufferPath()<CR>
 
-map <silent> <leader>l 
-      \:call RunCMD
-      \(
-      \[printf("clang %s -o %s/test.exe", GetCurrentBufferPath(), GetCurrentBufferDir()), 
-      \printf("%s/test.exe", GetCurrentBufferDir())]
-      \,'')<CR>
+map <silent> <leader>l :call RunCMD(['make'],'')<CR>
 
 nmap <leader>j :call GotoLine()<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
