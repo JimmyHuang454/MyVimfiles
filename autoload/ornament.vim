@@ -80,7 +80,7 @@ set guioptions-=R
 set guioptions-=m
 set guioptions-=T
 
-" 设置不折叠
+" 设置折叠
 set wrap
 
 set belloff=all

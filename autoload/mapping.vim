@@ -45,6 +45,8 @@ nmap <PageUp> <PageUp>zz
 
 nmap <leader>q :%s/\r//g<CR>
 
+nmap <leader>n :noh<CR>
+
 map <leader>y :let @+ = GetCurrentBufferPath()<CR>
 
 map <silent> <leader>l 
