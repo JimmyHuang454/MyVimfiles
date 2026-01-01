@@ -97,5 +97,6 @@ call g:LoadPlugin('tomtom/tlib_vim')
 call g:LoadPlugin('thinca/vim-themis')
 call g:LoadPlugin('lervag/vimtex')
 call g:LoadPlugin('dart-lang/dart-vim-plugin')
+call g:LoadPlugin('ryanoasis/vim-devicons')
 " Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 " Plug 'junegunn/fzf.vim'
