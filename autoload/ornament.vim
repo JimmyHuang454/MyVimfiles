@@ -92,6 +92,8 @@ set softtabstop=2
 "设置80列竖线
 set colorcolumn=81
 
+set viminfo^='2000
+
 if g:is_neovim
   au VimEnter * GuiPopupmenu 0
   au VimEnter * GuiTabline 0

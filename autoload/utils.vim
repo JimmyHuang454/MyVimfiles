@@ -46,6 +46,25 @@ function! RunCMD(cmd, cwd) abort
   "}}}
 endfunction
 
+function! NewTerm() abort
+  "{{{
+  if g:is_windows
+    let l:res =  term_start('cmd')
+  elseif g:is_macvim
+    let l:res =  term_start('/bin/zsh')
+  else
+    let l:res =  term_start('/bin/bash')
+  endif
+  return l:res
+  "}}}
+endfunction
+
+function! RunMakeInTerminal()
+  " 启动终端并获取 buffer
+  let buf = NewTerm()
+  call term_sendkeys(buf, 'make' . "\<CR>")
+endfunction
+
 func s:GotoLine2(timer) abort
   let l:int = str2nr(input('Line: '))
   call cursor(l:int, 0)

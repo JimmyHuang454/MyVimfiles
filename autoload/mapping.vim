@@ -49,7 +49,7 @@ nmap <leader>n :noh<CR>
 
 map <leader>y :let @+ = GetCurrentBufferPath()<CR>
 
-map <silent> <leader>l :call RunCMD(['make'],'')<CR>
+map <silent> <leader>l :call RunMakeInTerminal()<CR>
 
 nmap <leader>j :call GotoLine()<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
