@@ -48,10 +48,10 @@ nmap <silent> [j <Plug>(coc-diagnostic-prev)
 nmap <silent> [k <Plug>(coc-diagnostic-next)
 
 " GoTo code navigation
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+nmap <silent> gd :FinderCocDefinition<CR>
+nmap <silent> gy :FinderCocTypeDefinition<CR>
+nmap <silent> gi :FinderCocImplementation<CR>
+nmap <silent> gr :FinderCocReferences<CR>
 
 " Use K to show documentation in preview window
 nnoremap <silent> H :call ShowDocumentation()<CR>
