@@ -19,7 +19,7 @@ function! s:SetImType(imType) abort
   endif
   let l:temp = s:change_cmd . ' ' . a:imType
   if s:im_cmd == 'macism'
-    let  l:temp = l:temp . ' 0'
+    let  l:temp = l:temp . ' 150'
   endif
   silent call system(l:temp)
 endfunction
