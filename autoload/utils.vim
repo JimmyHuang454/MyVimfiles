@@ -77,3 +77,38 @@ function! GotoLine() abort
   "}}}
 endfunction
 
+" q: 普通窗口直接 :q; 在 diff 模式(如 fugitive 的 dd/:Gdiffsplit)下关闭所有对比窗口,
+" 只保留工作区的文件(非 fugitive:// 的那个窗口), 并退出 diff 模式
+function! SmartQuit() abort
+  "{{{
+  if !&diff
+    quit
+    return
+  endif
+
+  let l:diff_wins = filter(range(1, winnr('$')), 'getwinvar(v:val, "&diff")')
+  if len(l:diff_wins) < 2
+    diffoff!
+    return
+  endif
+
+  let l:keep = winnr()
+  for l:nr in l:diff_wins
+    if bufname(winbufnr(l:nr)) !~# '^fugitive://'
+      let l:keep = l:nr
+      break
+    endif
+  endfor
+
+  for l:nr in reverse(copy(l:diff_wins))
+    if l:nr != l:keep
+      execute l:nr . 'close'
+      if l:nr < l:keep
+        let l:keep -= 1
+      endif
+    endif
+  endfor
+  execute l:keep . 'wincmd w'
+  diffoff!
+  "}}}
+endfunction
