@@ -73,7 +73,8 @@ endfunction
 function! s:FugitiveGit(root, args) abort
   "{{{
   if exists('*FugitiveExecute')
-    let l:r = FugitiveExecute(a:args, a:root)
+    let l:r = FugitiveExecute(a:args)
+    " FugitiveExecute 第二个参数不是目录(会被当成 git 参数), 所以使用当前 buffer 的仓库
     " 过滤空行, 不依赖 stdout 末尾是否带空元素
     return l:r.exit_status ? [] : filter(copy(l:r.stdout), 'v:val !=# ""')
   endif
@@ -106,13 +107,13 @@ function! GitPushAll() abort
     let [l:br, l:remote, l:track] = split(l:line . '|', '|', 1)[0:2]
     if l:remote == ''
       " 没有上游: 推到默认 remote 并设置 upstream
-      call add(l:cmds, printf('git push -u %s %s', l:default, shellescape(l:br)))
+      call add(l:cmds, printf('git push -u %s %s', l:default, easy_term#Escape(l:br)))
     elseif l:track =~# 'gone'
       call add(l:skip, l:br . ' (upstream gone)')
     elseif l:track =~# 'behind'
       call add(l:skip, l:br . ' (' . l:track . ')')
     elseif l:track =~# 'ahead'
-      call add(l:cmds, printf('git push %s %s', l:remote, shellescape(l:br)))
+      call add(l:cmds, printf('git push %s %s', l:remote, easy_term#Escape(l:br)))
     endif
   endfor
   " 本地 tag (已存在于远端的会被忽略)
@@ -128,8 +129,7 @@ function! GitPushAll() abort
     return
   endif
 
-  let l:sep = g:is_windows ? ' & ' : '; '
-  call easy_term#Run(join(l:cmds, l:sep), l:root, 1)
+  call easy_term#Run(easy_term#Join(l:cmds), l:root, 1)
   "}}}
 endfunction
 
