@@ -52,6 +52,8 @@ map <leader>y :let @+ = GetCurrentBufferPath()<CR>
 map <silent> <leader>l :call RunMakeInTerminal()<CR>
 
 nmap <leader>j :call GotoLine()<CR>
+
+nmap <silent> <leader>p :GitPushAll<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                              Plugins mapping                               "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

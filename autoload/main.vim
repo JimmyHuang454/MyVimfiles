@@ -61,6 +61,7 @@ function! main#Start()
   call g:LoadFile('autocmd.vim', 0)
   call g:LoadFile('cwd_snippets.vim', 0)
   call g:LoadFile('utils.vim', 0)
+  call g:LoadFile('git_tag.vim', 0)
   "}}}
 endfunction
 
