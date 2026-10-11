@@ -77,8 +77,39 @@ function! GotoLine() abort
   "}}}
 endfunction
 
-" q: 普通窗口直接 :q; 在 diff 模式(如 fugitive 的 dd/:Gdiffsplit)下关闭所有对比窗口,
-" 只保留工作区的文件(非 fugitive:// 的那个窗口), 并退出 diff 模式
+" fugitive 状态页按 dd/dv/dh/ds 之前记录窗口布局, SmartQuit 时还原
+function! DiffSnapshot() abort
+  "{{{
+  let t:diff_layout = {
+        \ 'wins': map(range(1, winnr('$')), 'win_getid(v:val)'),
+        \ 'origin': win_getid(),
+        \ 'bufs': map(range(1, winnr('$')), '[win_getid(v:val), winbufnr(v:val)]'),
+        \ }
+  "}}}
+endfunction
+
+" 不重写 fugitive 的映射(各版本实现不同), 只在原映射前面加上记录布局
+function! s:WrapFugitiveDiffMaps() abort
+  "{{{
+  for l:key in ['dd', 'dv', 'dh', 'ds']
+    let l:m = maparg(l:key, 'n', 0, 1)
+    if empty(l:m) || !get(l:m, 'buffer', 0) || l:m.rhs =~# 'DiffSnapshot'
+      continue
+    endif
+    let l:m.rhs = substitute(l:m.rhs, '^:<C-U>', ':<C-U>call DiffSnapshot()<Bar>', '')
+    call mapset('n', 0, l:m)
+  endfor
+  "}}}
+endfunction
+
+augroup FugitiveDiffLayout
+  autocmd!
+  autocmd User FugitiveIndex call s:WrapFugitiveDiffMaps()
+augroup END
+
+" q: 普通窗口直接 :q; 在 diff 模式下退出对比:
+"   - 从 fugitive 状态页用 dd/dv/dh/ds 打开的: 关闭 dd 新开的所有窗口, 回到状态页(dd 之前的布局)
+"   - 其它(:Gdiffsplit 等): 关闭所有对比窗口, 只保留工作区文件(非 fugitive:// 的窗口)
 function! SmartQuit() abort
   "{{{
   if !&diff
@@ -86,6 +117,26 @@ function! SmartQuit() abort
     return
   endif
 
+  if exists('t:diff_layout')
+    let l:layout = t:diff_layout
+    unlet t:diff_layout
+    let l:diff_wins = filter(range(1, winnr('$')), 'getwinvar(v:val, "&diff")')
+    for l:nr in reverse(copy(l:diff_wins))
+      if index(l:layout.wins, win_getid(l:nr)) < 0
+        execute l:nr . 'close'
+      endif
+    endfor
+    diffoff!
+    " dd 可能把原有窗口里的 buffer 换成了工作区文件, 换回去
+    for [l:id, l:buf] in l:layout.bufs
+      let l:nr = win_id2win(l:id)
+      if l:nr > 0 && winbufnr(l:nr) != l:buf && bufexists(l:buf) && bufname(l:buf) !=# ''
+        call win_execute(l:id, 'silent! buffer ' . l:buf)
+      endif
+    endfor
+    call win_gotoid(l:layout.origin)
+    return
+  endif
   let l:diff_wins = filter(range(1, winnr('$')), 'getwinvar(v:val, "&diff")')
   if len(l:diff_wins) < 2
     diffoff!
