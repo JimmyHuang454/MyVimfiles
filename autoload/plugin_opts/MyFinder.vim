@@ -7,4 +7,5 @@ nmap <Space>m :FinderMark<cr>
 nmap <Space>f :FinderFiles<cr>
 nmap <Space>a :FinderCtagsFile<cr>
 nmap <Space>s :FinderRgAllLine <cr>
-nmap <Space>h :FinderGitDiff HEAD<cr>
+nmap <Space>b :FinderGitDiff HEAD<cr>
+nmap <Space>v :FinderGitStatus<cr>
