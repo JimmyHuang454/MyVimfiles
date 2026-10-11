@@ -22,7 +22,7 @@ else
   tmap <A-x> <C-w>:quit!<CR>
 endif
 
-nmap <silent> q :call SmartQuit()<CR>
+nmap q :q<cr>
 nmap s :wa<cr>
 
 map gj <C-w>j
